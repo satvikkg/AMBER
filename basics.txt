@@ -1,0 +1,31 @@
+##Understanding the options in amber 
+
+eg
+ &cntrl
+  imin=1, ntx=1, irest=0, ntrx=1, ntxo=1,
+  ntpr=25, ntwr=500, ntwx=0, ntwv=0, ntwe=0,
+  ntf=1, ntb=1, dielc=1.0, cut=10.0,
+  nsnb=25, igb=0,
+  ntr=1, restraint_wt=500, restraintmask='(:1-236 & !@H= & !@Na= & !@Cl=)',
+  maxcyc=1500, ntmin=1, ncyc=500, dx0=0.01, drms=0.0001,
+  ntc=1,
+ /
+
+#imin
+if imin = 1; minimization occurs. The most common minimization is steepest descent and conjugate gradient.
+if imin = 0; minimization does not occur and md occurs.
+
+#maxcyc 
+maxcyc = 500; gives the number of steps
+
+#ncyc
+nycy = 250;
+if ncyc value is < maxcyc; 
+sander will use the steepest descent algorithm for the first NCYC steps before switching to the 
+conjugate gradient algorithm for the remaining (MAXCYC - NCYC) steps.
+
+#ntb
+ntb = 0; to indicate that system is periodic
+
+#igb
+igb = 0; generalized born solvation model is not used.
